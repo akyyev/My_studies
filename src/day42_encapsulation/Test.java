@@ -1,12 +1,13 @@
 package day42_encapsulation;
 
+import java.util.Arrays;
+
 public class Test {
 	
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-
 		AccessModifiers obj = new AccessModifiers();
 		obj.height = 60;
 		//obj.name = "John"; //Not visible Because it's private.
