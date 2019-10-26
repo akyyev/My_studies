@@ -16,6 +16,9 @@ public class MyDate {
 		this.month=month;
 		this.year=year;
 	}
+	public MyDate() {
+		
+	}
 	
 	
 	
@@ -59,10 +62,10 @@ public class MyDate {
 			return true;
 		} else return false;
 	}
-	
+	// 2-28-2021
 	public static boolean isValidDate(int month, int day, int year) {
-		if(year>9999 || year<0) return false;
-		if(month<0 || month>12) return false;
+		if(year>9999 || year<=0) return false;
+		if(month<=0 || month>12) return false;
 		
 		int m = daysInMonths[month-1];
 		
@@ -71,6 +74,7 @@ public class MyDate {
 			else return false;
 		} else {
 			if(isLeapYear(year) && day<=29 && day>0) return true; 
+			else if(day<=28 && day>0) return true;
 			else return false;
 		}
 	}
@@ -108,28 +112,45 @@ public class MyDate {
 		
 		//step-6 Take the module
 		
-		num = num%7;
+		num = (num-1)%7;
 
 		return num;
 	}
 	
 	
 	public String toString() {	
-		return strDays[getDayOfWeek(month, day, year)-1]+" "+strMonths[month-1]+" "+getDay()+" "+year;	
+		return strMonths[month-1]+" "+getDay()+" "+year + "  "+ strDays[getDayOfWeek(month, day, year)];	
 	}
 	
 	
 	public MyDate nextDay() {
-		if(isValidDate(this.month, this.day+1, this.year)) return new MyDate(this.month, this.day+1, this.year);
-		else return new MyDate(this.month+1, this.day=1, this.year);
+		if(isValidDate(month, day+1, year)) return new MyDate(this.month, this.day+1, this.year);
+		else if(isValidDate(month+1, 1 , year)) return new MyDate(this.month+1, 1, this.year);
+		else return new MyDate(1, 1, this.year+1);
 	}
 
 	public MyDate nextMonth() {
-		return new MyDate(this.month+1, this.day, this.year);
+		if(isValidDate(month+1, day, year)) return new MyDate(this.month+1, this.day, this.year);
+		else return new MyDate(1, this.day, this.year+1);
 	}
 	
 	public MyDate nextYear() {
 		return new MyDate(this.month, this.day, this.year+1);
+	}
+	
+	//   3/1/2021   --> 2/28/2021
+	public MyDate yesterday() {
+		if(isValidDate(month, day-1, year)) return new MyDate(this.month, this.day-1, this.year);
+		else if(isValidDate(month-1, 31 , year)) return new MyDate(this.month-1, 31, this.year);
+		else if(isValidDate(month-1, 30 , year)) return new MyDate(this.month-1, 30, this.year);
+		else if(isValidDate(month-1, 29 , year)) return new MyDate(this.month-1, 29, this.year);
+		else if(isValidDate(month-1, 28 , year)) return new MyDate(this.month-1, 28, this.year);
+		else if(isValidDate(12, 31 , year-1)) return new MyDate(12, 31, this.year-1);
+		else if(isValidDate(12, 30 , year-1)) return new MyDate(12, 30, this.year-1);
+		else if(isValidDate(12, 29 , year-1)) return new MyDate(12, 29, this.year-1);
+		else return new MyDate(12, 28, this.year-1);
+
+
 	}
 }
 
