@@ -1,15 +1,16 @@
 package day43_RevievStaticInstance;
 
+
 public class MyDateTester {
 
 	public static void main(String[] args) {
 		
 		MyDate d0 = new MyDate();
-		d0.setDate(1, 1, 1990);
+		d0.setDate(5, 1, 1990);
 		
 		MyDate d1 = new MyDate(6,1,2371);
 		MyDate d2 = new MyDate(10, 25, 2019);
-		MyDate d3 = new MyDate(1, 1, 2020);
+		MyDate d3 = new MyDate(2, 28, 2021);
 		
 		
 		System.out.println(MyDate.isLeapYear(2021));
@@ -27,6 +28,8 @@ public class MyDateTester {
 		System.out.println("Tomorrow: \t"+d3.nextDay());
 		System.out.println("Next month: \t"+d3.nextMonth());
 		
-	}
+		System.out.println(d0.yesterday());
 
+
+	}
 }

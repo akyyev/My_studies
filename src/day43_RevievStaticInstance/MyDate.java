@@ -10,12 +10,17 @@ public class MyDate {
 	private static int[] daysInMonths = {31,28,31,30,31,30,31,31,30,31,30,31};
 
 	
-	//constructor
+	// constructor
 	public MyDate(int month, int day, int year) {
-		this.day=day;
-		this.month=month;
-		this.year=year;
+		if (MyDate.isValidDate(month, day, year)) {
+			this.day = day;
+			this.month = month;
+			this.year = year;
+		} else {
+			System.out.println("Invalid year, month, or day!");
+		}
 	}
+	
 	public MyDate() {
 		
 	}
