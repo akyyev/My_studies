@@ -27,10 +27,10 @@ public abstract class Shape {
 		System.out.println("This program calculates area, volume and perimeter of shapes\n");
 		
 		
-		Square obj = new Square(5);
-		Rectangle obj2 = new Rectangle(10,20);
-		Cylinder obj3 = new Cylinder(10,2); 
-		Circle obj4 = new Circle(10); // area = 314  perimeter = 62.8   volume = 0;
+		Shape obj = new Square(5);
+		Shape obj2 = new Rectangle(10,20);
+		Shape obj3 = new Cylinder(10,2); 
+		Shape obj4 = new Circle(10); // area = 314  perimeter = 62.8   volume = 0;
 		Shape obj5 = new RectangularPrism(10,20,30);
 		
 		
