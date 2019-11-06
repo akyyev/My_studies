@@ -21,6 +21,7 @@ public abstract class Shape {
 				"\t Perimeter: "+df.format(this.getPerimeter())+ "\t Volume: "+ df.format(this.getVolume());
 	}
 	
+	
 	public static void main(String[] args) {
 		
 		System.out.println("This program calculates area, volume and perimeter of shapes\n");
@@ -30,7 +31,7 @@ public abstract class Shape {
 		Rectangle obj2 = new Rectangle(10,20);
 		Cylinder obj3 = new Cylinder(10,2); 
 		Circle obj4 = new Circle(10); // area = 314  perimeter = 62.8   volume = 0;
-		Shape obj5 = new Circle(10);
+		Shape obj5 = new RectangularPrism(10,20,30);
 		
 		
 		System.out.println(obj);
@@ -41,11 +42,44 @@ public abstract class Shape {
 	}
 }
 
+class RectangularPrism extends Shape{
+	
+	
+	private double length;
+	private double width;
+	
+	public RectangularPrism(double length, double width, double height) {
+		this.length = length;
+		this.width = width;
+		this.height = height;
+		this.name = "Prism";
+		baseArea = this.length*this.width;
+		basePerimeter = 2*(this.length+this.width);
+	}
+	
+	@Override
+	public double getArea() {
+		return 2*baseArea+height*basePerimeter;
+	}
+	@Override
+	public double getVolume() {
+		return baseArea*height;
+	}
+	
+	@Override
+	public double getPerimeter() {
+		return 2*basePerimeter+4*height;
+	}
+	
+	
+	
+	
+}
 
 
 
 
-class Rectangle extends Shape{
+class Rectangle extends RectangularPrism{
 	
 	
 	private double length;
@@ -54,22 +88,22 @@ class Rectangle extends Shape{
 	
 	
 	public Rectangle(double length, double width) {
+		super(length, width, 0);
 		this.name = "Rectangle";
-		this.length = length;
-		this.width = width;
 	}
+	
 	@Override
 	public double getArea() {
-		return length*width;
+		return this.baseArea;
 	}
 	@Override
 	public double getVolume() {
-		return 0;
+		return super.getVolume();
 	}
 	
 	@Override
 	public double getPerimeter() {
-		return 2*(length+width);
+		return this.basePerimeter;
 	}
 	
 	
