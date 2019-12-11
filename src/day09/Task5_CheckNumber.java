@@ -1,4 +1,4 @@
-package day9;
+package day09;
 
 public class Task5_CheckNumber {
 	public static void main(String[] args) {
