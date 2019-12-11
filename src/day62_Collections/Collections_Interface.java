@@ -147,8 +147,8 @@ public class Collections_Interface {
 					data.addAll(Arrays.asList(10,9,8,5,3,2,2,10,1));
 					
 					System.out.println(data);//not sorted and has duplicates
-					Collections.sort(data);
-					System.out.println(data);
+					//Collections.sort(data); // will sort but still there will be  duplicates
+				
 					
 			TreeSet<Integer> dataNew = new TreeSet<>(data);
 					System.out.println(dataNew); //sorted and no duplicates
